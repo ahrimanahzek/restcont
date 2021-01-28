@@ -53,12 +53,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional(readOnly = true)
-    public User getUser(Integer id) {
+    public User getUser(int id) {
         return userDao.read(id);
     }
 
     @Transactional
-    public void deleteUser(Integer id) {
+    public void deleteUser(int id) {
         userDao.delete(id);
     }
 

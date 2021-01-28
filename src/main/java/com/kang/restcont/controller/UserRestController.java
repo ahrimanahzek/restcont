@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
+
     private final UserService userService;
 
     public UserRestController(UserService userService) {
@@ -24,19 +25,25 @@ public class UserRestController {
 
 
     @GetMapping
-    public String getUsers() {
-        Gson gson = new Gson();
+    public List<User> showAllUsers() {
+        return userService.getAllUsers();
+    }
 
-        return gson.toJson(userService.getAllUsers());
+    @PostMapping("admin/add")
+    public User addUser(String user, String roleIds){
+        User userModel = getUser(user, roleIds);
+        userService.insert(userModel);
+
+        return userModel;
     }
 
 
     @PostMapping("admin/edit")
     public User editUser(String user, String roleIds) {
-        User userFromJson = getUser(user, roleIds);
-        userService.update(userFromJson);
+        User userModel = getUser(user, roleIds);
+        userService.update(userModel);
 
-        return userFromJson;
+        return userModel;
     }
 
 
@@ -46,16 +53,6 @@ public class UserRestController {
 
         return id;
     }
-
-
-    @PostMapping("admin/add")
-    public User addUser(String user, String roleIds){
-        User userFromJson = getUser(user, roleIds);
-        userService.insert(userFromJson);
-
-        return userFromJson;
-    }
-
 
     private User getUser(String user, String roleIds) {
         Gson gson = new Gson();

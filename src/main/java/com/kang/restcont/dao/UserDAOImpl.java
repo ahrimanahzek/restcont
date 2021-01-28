@@ -61,7 +61,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(int id) {
         entityManager.remove(read(id));
     }
 

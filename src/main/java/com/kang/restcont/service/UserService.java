@@ -22,9 +22,9 @@ public interface UserService extends UserDetailsService {
 
     void update(User user);
 
-    User getUser(Integer id);
+    User getUser(int id);
 
-    void deleteUser(Integer id);
+    void deleteUser(int id);
 
 }
 

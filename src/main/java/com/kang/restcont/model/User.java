@@ -14,7 +14,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private int id;
 
     @Column(name = "login")
     private String login;
@@ -77,7 +77,7 @@ public class User implements UserDetails {
         return age;
     }
 
-    public void setAge(Byte age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -99,11 +99,11 @@ public class User implements UserDetails {
     }
 
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
